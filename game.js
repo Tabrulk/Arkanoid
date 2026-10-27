@@ -11,6 +11,8 @@ let game = {
     blocks: [],
     rows: 4,
     cols: 8,
+    width: 640,
+    height: 360,
     sprites: {
         background: null,
         ball: null,
@@ -87,10 +89,14 @@ let game = {
             this.create();
             this.run();
         });
+    },
+    random(min, max) {
+        return Math.floor(Math.random() * (max - min + 1) + min);
     }
 };
 
 game.ball = {
+    dx: 0,
     dy: 0,
     velocity: 3,
     x: 320,
@@ -99,10 +105,14 @@ game.ball = {
     height: 20,
     start() {
         this.dy = -this.velocity;
+        this.dx = game.random(-this.velocity, this.velocity);
     },
     move() {
         if (this.dy) {
             this.y += this.dy;
+        }
+        if (this.dx) {
+            this.x += this.dx;
         }
     }
 };
