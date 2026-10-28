@@ -160,7 +160,7 @@ let game = {
 game.ball = {
     dx: 0,
     dy: 0,
-    velocity: 3,
+    velocity: 5,
     x: 320,
     y: 280,
     width: 20,
